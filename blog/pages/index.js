@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import relativeTime from 'dayjs/plugin/relativeTime';
 import "@/components/dayjs-mn";
+import { Header } from "@/components/header";
+import { Hero } from "@/components/hero";
 
 dayjs.extend(relativeTime);
 
@@ -20,35 +22,33 @@ export default function Home() {
     loadMore();
   }, []);
 
-  function loadMore() {
+  async function loadMore() {
     setLoading(true);
-    
 
-    fetch(`https://dev.to/api/articles?username=paul_freeman&${page}&per_page=${pageSize}`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((newArticles) => {
-        const updatedArticles = articles.concat(newArticles);
-        setArticles(updatedArticles);
-        setPage(page + 1);
-        if (newArticles.length < pageSize) {
-          setEnded(true);
-        }
-        setLoading(false);
-      });
-  }
+    const response = await fetch(`https://dev.to/api/articles?username=thomasbnt&page=${page}&per_page=${pageSize}`);
+    const newArticles = await response.json();
+
+    const updatedArticles = articles.concat(newArticles);
+    setArticles(updatedArticles);
+    setPage(page + 1);
+    if (newArticles.length < pageSize) {
+      setEnded(true);
+    }
+      setLoading(false);
+    }  
 
   return (
     <div className="container mx-auto ">
+      <Header />
+      <Hero />
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 mx-auto">
         {articles.map((item) => (
           <div key={item.id} className="shadow-lg card bg-base-100">
             <div className="card-body ">
               <div className="badge badge-primary">{item.tag_list[0]}</div>
 
-              <Image src={item.social_image} width={500} height={500} className="aspect-video object-cover bg-slate-100"/>
-              <Link href={item.url} target="_blank">
+              <Image src={item.social_image} width={500} height={250} className="aspect-video object-cover bg-slate-100" />
+              <Link href={item.path}>
                 {item.title}
               </Link>
               <div className="flex items-center gap-2">
