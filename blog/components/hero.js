@@ -1,19 +1,45 @@
+import dayjs from "dayjs";
+import Image from "next/image";
+import { useEffect, useState } from "react"
 
 
 
 
+export const Hero = () => {
+    const [article, setArticle] = useState([]);
+    useEffect(() => {
+        fetch("https://dev.to/api/articles?username=thomasbnt")
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                setArticle(data);
+            });
+    }, [])
 
-export function Hero() {
     return (
         <div>
-            <div id="slide1" className="carousel-item relative w-full">
-                <img className="w-full"
-                    src="https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.webp"
-                     
-                />
-                <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-                    <a href="#slide4" className="btn btn-circle">❮</a>
-                    <a href="#slide2" className="btn btn-circle">❯</a>
+            <div className="pb-24 hidden md:block max-w-[1216px] mx-auto">
+                <div className="carousel carousel-center w-full aspect-[4/2]">
+                    {
+                        article.map((item, index) => (
+                            <div key={item.id} id={`slide${index}`} className="carousel-item relative w-full">
+                                <Image width={2000} height={2000}
+                                    src={item.cover_image || item.social_image}
+                                    className="w-full rounded-xl"
+                                />
+                                <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+                                    <a href={`#slide${index - 1}`} className="btn btn-circle">❮</a>
+                                    <a href={`#slide${index + 1}`} className="btn btn-circle">❯</a>
+                                </div>
+                                <div className="absolute p-10 left-2 bottom-2 bg-slate-300 rounded-xl max-w-[30%] w-full">
+                                    <div >{item.tag_list[0]}</div>
+                                    <div>{item.description}</div>
+                                    <div>{dayjs(item.published_at).format("YYYY/MM/d")}</div>
+                                </div>
+                            </div>
+                        ))
+                    }
                 </div>
             </div>
         </div>
