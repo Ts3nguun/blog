@@ -18,21 +18,26 @@ export function Trend() {
     }, [])
 
     return (
-        <div className="container mx-auto flex flex-col items-center">
-            <div className="carousel rounded-box w-96">
-                {article.map((items) => (
-                    <div key={items.id} className="carousel-item w-full relative">
-                        <Link href={items.path}>
-                            <Image src={items.social_image} width={200} height={200} className="h-full size-96" />
-                        </Link>
+        <div>
+            <div>
+                
+            </div>
+            <div className="container mx-auto flex flex-col items-center md:hidden">
+                <div className="carousel rounded-box w-96">
+                    {article.map((items) => (
+                        <div key={items.id} className="carousel-item w-full relative">
+                            <Link href={items.path}>
+                                <Image src={items.social_image} width={2000} height={2000} className="h-full size-96" />
+                            </Link>
 
-                        <div className="absolute bottom-10 left-10 z-50">
-                            <p className="badge badge-primary">{items.tag_list[0]}</p>
-                            <div className="text-white rounded-lg">{items.descriptiond}</div>
+                            <div className="absolute bottom-10 left-10 z-50">
+                                <p className="badge badge-primary">{items.tag_list[0]}</p>
+                                <div className="text-white rounded-lg">{items.descriptiond}</div>
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
 
+                </div>
             </div>
         </div>
     )

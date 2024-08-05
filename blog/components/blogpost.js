@@ -37,7 +37,7 @@ export  function Blog() {
     }  
 
   return (
-    <div className="container mx-auto ">
+    <div className="container mx-auto ">fknfkannfjsnfknf
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 mx-auto">
         {articles.map((item) => (
           <div key={item.id} className="shadow-lg card bg-base-100">

@@ -18,7 +18,7 @@ export const Hero = () => {
     }, [])
 
     return (
-        <div>
+        <div id="Home">
             <div className="pb-24 hidden md:block max-w-[1216px] mx-auto">
                 <div className="carousel carousel-center w-full aspect-[4/2]">
                     {
