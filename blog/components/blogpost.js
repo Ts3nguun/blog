@@ -9,6 +9,12 @@ import "@/components/dayjs-mn";
 dayjs.extend(relativeTime);
 
 const pageSize = 6;
+const tags = [
+  {value: "All" , name:"Бүгд"},
+  {value: "beginners" , name:"Анхан шат"},
+  {value: "javascript" , name:"javascript"},
+  {value: "webdev" , name:"webdev"},
+];
 
 export  function Blog() {
   const [articles, setArticles] = useState([]);
@@ -17,9 +23,9 @@ export  function Blog() {
   const [loading, setLoading] = useState(false);
 
 
-  useEffect(() => {
-    loadMore();
-  }, []);
+  useEffect(() =>{
+    loadArticles();
+}, [selectedCategory]);
 
   async function loadMore() {
     setLoading(true);
@@ -37,7 +43,14 @@ export  function Blog() {
     }  
 
   return (
-    <div className="container mx-auto ">fknfkannfjsnfknf
+    <div className="container mx-auto ">
+      <div>
+        {tags.map((taga) => (
+          <div key={taga.value} className={`cursor-pointer font-bold hover:text-orange-500 ${selectedCategory === tag.value ? "text-orange-600" : ""}`}>
+            {taga.name}
+          </div>
+        ))}
+      </div>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 mx-auto">
         {articles.map((item) => (
           <div key={item.id} className="shadow-lg card bg-base-100">

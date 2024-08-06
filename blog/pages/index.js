@@ -2,6 +2,7 @@ import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
 import { Blog } from "@/components/blogpost";
 import { Trend } from "@/components/trend";
+import AllPost from "@/components/allpost";
 
 export default function Home() {
   return (
@@ -9,7 +10,7 @@ export default function Home() {
       <Header />
       <Hero />
       <Trend  />
-      <Blog/>  
+      <AllPost/>
     </div>
   );
 }
