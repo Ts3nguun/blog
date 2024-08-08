@@ -18,7 +18,6 @@ export default function Home() {
   async function getArticle() {
     setLoading(true);
     const response = await fetch(`https://dev.to/api/articles/${author}/${slug}`);
-    setArticles(detail);
     setLoading(false);
 
   }

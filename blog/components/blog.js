@@ -10,22 +10,23 @@ dayjs.extend(relativeTime);
 
 const pageSize = 6;
 const tags = [
-  {value: "All" , name:"Бүгд"},
-  {value: "beginners" , name:"Анхан шат"},
-  {value: "javascript" , name:"javascript"},
-  {value: "webdev" , name:"webdev"},
+  { value: "All", name: "Бүгд" },
+  { value: "beginners", name: "Анхан шат" },
+  { value: "javascript", name: "javascript" },
+  { value: "webdev", name: "webdev" },
 ];
 
-export  function Blog() {
+export function Blog() {
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [articles, setArticles] = useState([]);
   const [page, setPage] = useState(1);
   const [ended, setEnded] = useState(false);
   const [loading, setLoading] = useState(false);
 
 
-  useEffect(() =>{
-    loadArticles();
-}, [selectedCategory]);
+  useEffect(() => {
+    loadMore();
+  }, [selectedCategory]);
 
   async function loadMore() {
     setLoading(true);
@@ -39,32 +40,30 @@ export  function Blog() {
     if (newArticles.length < pageSize) {
       setEnded(true);
     }
-      setLoading(false);
-    }  
+    setLoading(false);
+  }
 
   return (
-    <div className="container mx-auto ">
-      <div>
-        {tags.map((taga) => (
-          <div key={taga.value} className={`cursor-pointer font-bold hover:text-orange-500 ${selectedCategory === tag.value ? "text-orange-600" : ""}`}>
-            {taga.name}
+    <div className="container mx-auto "id="Blog">
+      <p className="font-bold">All Blog Post</p>
+      <div className="flex gap-5 mb-5">
+        {tags.map((tag) => (
+          <div key={tags.value} className={`cursor-pointer font-bold hover:text-orange-500 ${selectedCategory === tag.value ? "text-orange-600" : ""}`}>
+            {tag.name}
           </div>
         ))}
       </div>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 mx-auto">
-        {articles.map((item) => (
-          <div key={item.id} className="shadow-lg card bg-base-100">
+        {articles.map((article) => (
+          <div key={article.id} className="shadow-lg card bg-base-100">
             <div className="card-body ">
-              <div className="badge badge-primary">{item.tag_list[0]}</div>
-
-              <Image src={item.social_image} width={500} height={250} className="aspect-video object-cover bg-slate-100" />
-              <Link href={item.path}>
-                {item.title}
+              <Image src={article.social_image} width={500} height={250} className="aspect-video object-cover bg-slate-100" />
+              <div className="badge text-blue-600">{article.tag_list[0]}</div>
+              <Link href={article.path}>
+                {article.title}
               </Link>
-              <div className="flex items-center gap-2">
-                <Image src={item.user.profile_image_90} width={50} height={50} />
-                <div>{item.user.name}</div>
-                <div>{dayjs(item.published_at).locale("mn").fromNow()}</div>
+              <div className="flex items-center ">
+                <div className="text-gray-400 ">{dayjs(article.published_at).locale("mn").fromNow()}</div>
               </div>
             </div>
           </div>

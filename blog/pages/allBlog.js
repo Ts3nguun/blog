@@ -6,12 +6,6 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import "@/components/dayjs-mn";
 
 const pageSize = 6;
-const tags = [
-    { value: "", name: "Бүгд" },
-    { value: "beginners", name: "Анхан шат" },
-    { value: "javascript", name: "javascript" },
-    { value: "webdev", name: "webdev" },
-];
 
 export default function AllPost() {
     const [selectedCategory, setSelectedCategory] = useState("");
@@ -19,6 +13,8 @@ export default function AllPost() {
     const [articles, setArticles] = useState([]);
     const [ended, setEnded] = useState(false);
     const [page, setPage] = useState(1);
+
+    dayjs.extend(relativeTime)
 
     async function loadInitialArticles() {
         setLoading(true);
@@ -47,17 +43,10 @@ export default function AllPost() {
 
     return (
         <div className="container mx-auto ">
-            <div className="flex gap-5 mb-5">
-                {tags.map((tag) => (
-                    <div key={tag.value} className={`cursor-pointer font-bold hover:text-orange-500  ${selectedCategory === tag.value ? "text-orange-600" : ""}`} onClick={() => setSelectedCategory(tag.value)}>
-                        {tag.name}
-                    </div>
-                ))}
-            </div>
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 mx-auto">
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 mx-auto px-14" >
                 {articles.map((item) => (
                     <div key={item.id} className="shadow-lg card bg-base-100">
-                        <div className="card-body ">
+                        <div className="card-body px-10">
                             <div className="badge badge-primary">{item.tag_list[0]}</div>
 
                             <Image src={item.social_image} width={500} height={250} className="aspect-video object-cover bg-slate-100" />
@@ -72,6 +61,7 @@ export default function AllPost() {
                         </div>
                     </div>
                 ))}
+                
             </div>
             {!ended && (
                 <div className="py-16 text-center" >
