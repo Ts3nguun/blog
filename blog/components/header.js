@@ -6,15 +6,15 @@ import { IoMdClose } from "react-icons/io";
 const navigation = [
     {
         name: "Home",
-        link: "#Home"
+        link: "/"
     },
     {
         name: "Blog",
-        link: "#Blog"
+        link: "/Blog"
     },
     {
         name: "Contact",
-        link: "#about"
+        link: "/Contact"
     },
 
 ]

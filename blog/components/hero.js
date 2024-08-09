@@ -32,10 +32,10 @@ export const Hero = () => {
                                     <a href={`#slide${index - 1}`} className="btn btn-circle">❮</a>
                                     <a href={`#slide${index + 1}`} className="btn btn-circle">❯</a>
                                 </div>
-                                <div className="absolute p-10 left-2 bottom-2 bg-slate-300 rounded-xl max-w-[30%] w-full">
-                                    <div >{item.tag_list[0]}</div>
-                                    <div>{item.description}</div>
-                                    <div>{dayjs(item.published_at).format("YYYY/MM/d")}</div>
+                                <div className="absolute p-10 left-2 bottom-2 bg-slate-300 rounded-xl max-w-[50%] w-full">
+                                    <div className="">{item.tag_list[0]}</div>
+                                    <div className="font-bold mb-3">{item.description}</div>
+                                    <div className="text-gray-500 ">{dayjs(item.published_at).format("YYYY/MM/d")}</div>
                                 </div>
                             </div>
                         ))

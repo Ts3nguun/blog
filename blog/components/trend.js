@@ -20,7 +20,7 @@ export function Trend() {
     return (
         <div>
             <div>
-                
+
             </div>
             <div className="container mx-auto flex flex-col items-center md:hidden">
                 <div className="carousel rounded-box w-96">
