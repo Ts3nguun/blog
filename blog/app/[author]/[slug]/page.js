@@ -2,7 +2,7 @@ import parse from 'html-react-parser';
 
 
 export async function generateMetaData({ params }) {
-    const response = await fetch(`https://dev.to/api/articles/${pramps.author}/${pramps.slug}`);
+    const response = await fetch(`https://dev.to/api/articles/${params.author}/${params.slug}`);
     const article = await response.json();
 
     return {
@@ -13,8 +13,8 @@ export async function generateMetaData({ params }) {
     };
 }
 
-export default async function Page({ pramps }) {
-    const response = await fetch(`https://dev.to/api/articles/${pramps.author}/${pramps.slug}`);
+export default async function Page({ params }) {
+    const response = await fetch(`https://dev.to/api/articles/${params.author}/${params.slug}`);
     const article = await response.json();
     return (
         <main>
