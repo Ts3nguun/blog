@@ -6,10 +6,12 @@ export async function generateMetaData({ params }) {
     const article = await response.json();
 
     return {
+        title: article.title,
         openGraph: {
             title: article.title,
             description: article.description,
-        }
+            images: [{url: article.social_image}],
+        },
     };
 }
 
