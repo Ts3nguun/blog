@@ -1,25 +1,13 @@
 import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useState } from "react";
 
 
 
-export function Trend() {
-    const [article, setArticle] = useState([]);
 
-    useEffect(() => {
-        fetch("https://dev.to/api/articles?username=thomasbnt")
-            .then((response) => {
-                return response.json();
-            })
-            .then((data) => {
-                setArticle(data);
-            });
-    }, [])
 
+export function Trenidng() {
     return (
         <div>
-            <div className="hidden md:flex gap-5 mb-28">
+            <div>
                 {article.map(
                     (item, index) =>
                         index < 4 && (
@@ -40,24 +28,6 @@ export function Trend() {
                                         {item.description}
                                     </div>
                                 </div>
-                            </div>
-                        )
-                )}
-            </div>
-            <div className=" block md:hidden">
-                {article.map(
-                    (item, index) =>
-                        index < 4 && (
-                            <div
-                                key={item.id}
-                                className="carousel-item h-full max-w-[80%] w-full mx-auto">
-                                <Image
-                                    className="w-full rounded-xl"
-                                    src={item.user.profile_image}
-                                    width={100}
-                                    height={100}
-                                />
-                                
                             </div>
                         )
                 )}

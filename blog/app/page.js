@@ -2,7 +2,6 @@
 
 import { Blog } from "@/components/blog";
 import { Hero } from "@/components/hero";
-import { MainLayout } from "@/components/mainLayout";
 import { Trend } from "@/components/trend";
 
 
@@ -12,8 +11,6 @@ export default function Home() {
         <Hero />
         <Trend />
         <Blog />
-      {/* <MainLayout>
-      </MainLayout> */}
     </div>
   );
 }
