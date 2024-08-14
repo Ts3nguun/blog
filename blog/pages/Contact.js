@@ -38,7 +38,7 @@ export default function Contact() {
                     </div>
                     <input type="text" placeholder="Subject" className="input input-bordered w-full max-w-2xl" />
                     <input type="text" placeholder="Write a message" className="input input-bordered w-full max-w-2xl h-40" />
-                    <button className="btn btn-primary w-28"> </button>
+                    <button className="btn btn-primary w-28"> Send Message</button>
                 </div>
                 
             </div>
