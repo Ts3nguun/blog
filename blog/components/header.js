@@ -30,7 +30,7 @@ export function Header() {
 
     return (
         <div>
-            <div className=" flex justify-between  w-[1216px] mx-auto gap-24 mb-24">
+            <div className=" flex justify-between  max-w-[1216px] w-full mx-auto gap-24 mb-24">
                 <div className="flex items-center">
                     <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M18 36C27.9411 36 36 27.9411 36 18C36 8.05888 27.9411 0 18 0C8.05888 0 0 8.05888 0 18C0 22.152 1.40577 25.9756 3.76732 29.021L7.73554 14.0299C9.38672 7.52344 13.6758 4.15725 20.5616 4.15725H22.936C27.7785 4.15725 31.335 8.70307 30.1698 13.4033C29.9609 14.2463 29.5702 15.0334 29.0253 15.7097L27.0045 18.2174C26.486 18.8609 26.2968 19.7092 26.493 20.5121L27.109 23.0338C27.4278 24.339 27.3695 25.708 26.941 26.9814C25.4832 31.3132 21.4227 34.231 16.8521 34.231H10.2086C12.5662 35.3648 15.2089 36 18 36Z" fill="#141624" />
@@ -48,10 +48,10 @@ export function Header() {
                     ))}
                 </div>
                 <form action="/search">
-                    <input type="search" name="q" className="input"/>
+                    <input type="search" name="q" className="input input-bordered"/>
                 </form>
 
-                <div className="lg:hidden items-center ">
+                {/* <div className="lg:hidden items-center ">
                     <div className=" gap-4">
                         <button onClick={openMenu}><IoMdMenu className="w-9 h-9" /></button>
                         <div>
@@ -71,7 +71,7 @@ export function Header() {
 
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     )

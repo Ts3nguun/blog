@@ -18,13 +18,13 @@ export function Trend() {
     }, [])
 
     return (
-        <div>
-            <div className="hidden md:flex gap-5 mb-28">
+        <div className="max-w-[1216px] w-full mx-auto">
+            <div className="hidden md:flex justify-between mb-28 mx-auto carousel carousel-center"> 
                 {article.map(
                     (item, index) =>
                         index < 4 && (
                             <div key={item.id}
-                                className="max-w-[293px] w-full relative overflow-hidden group hover:cursor-pointer hover:scale-105">
+                                className="max-w-[293px] w-full carousel-item relative group hover:cursor-pointer hover:scale-105 ">
                                 <Image
                                     className="w-full rounded-xl"
                                     src={item.user.profile_image}
@@ -44,24 +44,31 @@ export function Trend() {
                         )
                 )}
             </div>
-            <div className=" block md:hidden">
-                {article.map(
-                    (item, index) =>
-                        index < 4 && (
-                            <div
-                                key={item.id}
-                                className="carousel-item h-full max-w-[80%] w-full mx-auto">
-                                <Image
-                                    className="w-full rounded-xl"
-                                    src={item.user.profile_image}
-                                    width={100}
-                                    height={100}
-                                />
-                                
-                            </div>
-                        )
-                )}
+
+
+
+
+            <div className="md:hidden mx-auto carousel carousel-vertical rounded-box h-96">
+                <div className="carousel-item h-full">
+                    {article.map(
+                        (item, index) =>
+                            index < 4 && (
+                                <div
+                                    key={item.id}
+                                    className="carousel-item h-full max-w-[80%] w-full mx-auto">
+                                    <Image
+                                        className="w-full rounded-xl"
+                                        src={item.user.profile_image}
+                                        width={100}
+                                        height={100}
+                                    />
+
+                                </div>
+                            )
+                    )}˝
+                </div>
             </div>
+
         </div>
     )
 }
